@@ -1,0 +1,14 @@
+<p>home works!</p>
+<ul>
+    @for (item of flights(); track $index) {
+        <li>
+            <h3><strong>{{item.destination}}</strong></h3>
+            <ul>
+                <li>ID: <strong>{{item.id}}</strong></li>
+                <li>Broj leta: <strong>{{item.flightNumber}}</strong></li>
+                <li>Vreme : <strong>{{item.scheduledAt}}</strong></li>
+            </ul>
+        </li>
+    }
+
+</ul>
