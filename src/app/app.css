@@ -1,0 +1,17 @@
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: blueviolet;
+    color: aliceblue;
+}
+
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.wrapper{
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
