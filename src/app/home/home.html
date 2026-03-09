@@ -14,6 +14,10 @@
     
     <a [routerLink]="`/details/${item.id}`" matButton >
       <mat-icon fontIcon="description" />Details</a>
+    @if(service.getActiveUser()){
+    <a [routerLink]="`/details/${item.id}/booking`" matButton >
+      <mat-icon fontIcon="airplane_ticket" />Book now</a>
+    }
   </mat-card-actions>
 </mat-card>
 
