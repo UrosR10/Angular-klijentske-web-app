@@ -1,0 +1,11 @@
+.loading-card{
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
+
+.loading-gif{
+    width: 80px;
+}

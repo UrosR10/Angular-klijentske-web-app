@@ -1,0 +1,122 @@
+@if(destinations().length > 0){
+<div class="user-wrapper">
+    <mat-card class="user-card">
+    <mat-card-header>
+        <h1>User details </h1>
+    </mat-card-header>
+    <mat-card-content>
+        <div >
+            <mat-form-field class="full-width">
+                <mat-label>E-mail</mat-label>
+            <input matInput type="email" [(ngModel)]="activeUser!.email" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>First name</mat-label>
+                <input  matInput type="text" [(ngModel)]="activeUser!.firstName">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Last name</mat-label>
+                <input  matInput type="text" [(ngModel)]="activeUser!.lastName">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Adress</mat-label>
+                <input  matInput type="text" [(ngModel)]="activeUser!.address">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Phone</mat-label>
+                <input  matInput type="text" [(ngModel)]="activeUser!.phone">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Favorite destination</mat-label>
+                <mat-select [(ngModel)]="activeUser!.destination">
+                    @for (dest of destinations(); track dest) {
+                    <mat-option [value]="dest">{{dest}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button type="button" matButton (click)='updateUser()'>
+             <mat-icon fontIcon="save" /> Save changes
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="user-card">
+    <mat-card-header>
+        <h1>Change password </h1>
+    </mat-card-header>
+    <mat-card-content>
+        <div >
+            <mat-form-field class="full-width">
+                <mat-label>Old password</mat-label>
+            <input matInput [type]="hide1 ? 'password' : 'text'" [(ngModel)]="oldPassword">
+            <button mat-icon-button
+                    matSuffix
+                    (click)="hide1 = !hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>New password</mat-label>
+            <input matInput [type]="hide2 ? 'password' : 'text'" [(ngModel)]="newPassword" >
+            <button mat-icon-button
+                    matSuffix
+                    (click)="hide2 = !hide2">
+                <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Password repeat</mat-label>
+            <input matInput [type]="hide3 ? 'password' : 'text'" [(ngModel)]="passRepeat">
+            <button mat-icon-button
+                    matSuffix
+                    (click)="hide3 = !hide3">
+                <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            </mat-form-field>
+            
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button type="button" matButton (click)='updatePassword()'>
+             <mat-icon fontIcon="password" /> Update password
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+
+<mat-card class="user-card">
+    <mat-card-header>
+        <h1>Recomended flights </h1>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <mat-list>
+            @for(f of recommended(); track $index){
+                
+                <mat-list-item>
+
+                    <mat-icon matListItemIcon>flight</mat-icon>
+                    <div matListItemTitle>{{f.flightNumber}}</div>
+                    <div matListItemLine>{{utils.formatDate(f.scheduledAt)}}
+                        <a [routerLink]="`/details/${f.id}`" matButton>Open details</a>
+                    </div>
+                    
+                    
+                </mat-list-item>
+                
+            }
+           </mat-list>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+
+</div>
+
+}@else {
+    <app-loading />
+}

@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Alerts } from '../alerts';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 export class Login {
   email:string = 'user@example.com'
   password:string= 'user123'
+  hide = true;
 
   constructor(private router: Router){
     if(AuthService.getActiveUser()){
@@ -29,6 +31,6 @@ export class Login {
       this.router.navigate(['/'])
       return
     }
-    alert("Invalid email or password");
+    Alerts.error("Invalid email or password");
   }
 }
